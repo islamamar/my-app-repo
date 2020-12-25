@@ -1,0 +1,93 @@
+<div class="uk-child uk-padding" >
+    <table class="uk-table">
+        <caption>Table Caption</caption>
+        <thead>
+            <tr>
+                <th>$key</th>
+                <th> name </th>
+                <th> phone </th>
+                <th> skill </th>
+                <th> city </th>
+                <th> price </th>
+                <th> comments </th>
+                <th>actions1</th>
+                <th>actions2</th>
+
+            </tr>
+        </thead> 
+
+    
+        
+        <tbody>
+            <tr *ngFor="let item of itemarray">
+                <td>{{item.$key}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.phone}}</td> 
+                <td>{{item.skill}}</td>
+                <td>{{item.city}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.comments}}</td>                
+                <td> <button class="uk-button uk-button-primary uk-margin-small-right" type="button" uk-toggle="target: #modal-example" (click)="onEditForm(item.$key)">Edit</button> </td>
+                <td> <button class="uk-button uk-button-danger" (click)="onDelete(item.$key)">Delete</button> </td> 
+           
+            
+<!-- This is the modal --> 
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Headline</h2>
+
+        <div class='uk-padding'>
+            <fieldset class="uk-fieldset">
+        
+                <legend class="uk-legend">اضف مهاراتي </legend>
+        
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="اسمك" name= "name"  [(ngModel)]="data.name">
+                </div> 
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="رقم الهاتف " name= "phone"  [(ngModel)]="data.phone" >
+                </div>
+        
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="المهارة " name= "skill"   [(ngModel)]="data.skill" >
+                </div>
+        
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="المدينة " name= "city"   [(ngModel)]="data.city" >
+                </div>
+        
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="السعر" name= "price"  [(ngModel)]="data.price" >
+                </div>
+        
+        
+                
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" placeholder="ملاحظات" name="comments"   [(ngModel)]="data.comments" ></textarea>
+                </div>
+        
+                
+                
+                <div class="uk-margin">
+                    <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1"  >
+                </div> 
+           
+                
+            </fieldset> 
+        </div>
+        
+        <p> {{item.$key}}</p>
+       
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button" (click)="onEdit(item.$key)">Edit</button>
+        </p>
+    </div>
+</div> 
+</tr>
+</tbody>
+    </table> 
+
+    
+</div>  
+
